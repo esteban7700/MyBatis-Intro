@@ -67,16 +67,22 @@ public class MyBatisExample {
     public static void main(String args[]) throws SQLException {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
 
+        
         SqlSession sqlss = sessionfact.openSession();
 
         PacienteMapper pmap=sqlss.getMapper(PacienteMapper.class);
-
         
+        System.out.println(pmap.loadPacienteById(1, "cc"));
         
         sqlss.commit();
         
         
         sqlss.close();
+
+        
+        
+        
+
 
     }
 
