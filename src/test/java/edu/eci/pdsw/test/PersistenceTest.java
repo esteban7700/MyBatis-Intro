@@ -55,7 +55,6 @@ public class PersistenceTest {
     public void setUp() {
     }
     
-    
     @Test
     public void TestOne(){
         SqlSessionFactory sessionfact = getSqlSessionFactory();
