@@ -20,8 +20,8 @@
     </resultMap>                                                                                             
     
     
-    <insert id="insertConsulta" useGeneratedKeys="true" keyProperty="con.id">
-        insert into CONSULTAS (fecha_y_hora,resumen,PACIENTES_id,PACIENTES_tipo_id) values(#{consulta}.getFechayHora(),#{consulta}.getResumen(),#{idpacienteconsulta},#{tipoidpacienteconsulta})
+    <insert id="insertConsulta" useGeneratedKeys="true" keyProperty="consulta.id">
+        insert into CONSULTAS (fecha_y_hora,resumen,PACIENTES_id,PACIENTES_tipo_id) values(#{consulta.fechayHora},#{consulta.resumen},#{idpacienteconsulta},#{tipoidpacienteconsulta})
     </insert>
    
     <insert id="insertPaciente">

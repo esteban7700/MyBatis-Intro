@@ -79,14 +79,13 @@ public class MyBatisExample {
         System.out.println(pmap.loadPacienteById(1, "cc"));
         //prueba para insertCOnsulta y insert paciente
         Date date = java.sql.Date.valueOf("1998-06-19");
-        Paciente jhordy = new Paciente(1121543540,"cc","Jhordy Salinis",date);
+        Paciente jhordy = new Paciente(1121946830,"cc","Jhordy Salinis",date);
         Consulta consulta=new Consulta(java.sql.Date.valueOf("2000-01-02"),"hola como estas?");
         Set<Consulta> set=jhordy.getConsultas();
         set.add(consulta);
         jhordy.setConsultas(set);
         
-        pmap.insertPaciente(jhordy);
-        
+        registrarNuevoPaciente(pmap,jhordy);
         sqlss.commit();
         
         
@@ -98,7 +97,7 @@ public class MyBatisExample {
      * @param pmap mapper a traves del cual se hará la operacion
      * @param p paciente a ser registrado
      */
-    public void registrarNuevoPaciente(PacienteMapper pmap, Paciente p){
+    public static void registrarNuevoPaciente(PacienteMapper pmap, Paciente p){
         pmap.insertPaciente(p);
         for(Consulta c:p.getConsultas()){
             pmap.insertConsulta(c,p.getId(),p.getTipo_id());
