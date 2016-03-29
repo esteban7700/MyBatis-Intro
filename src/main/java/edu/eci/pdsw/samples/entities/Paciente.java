@@ -18,6 +18,7 @@ package edu.eci.pdsw.samples.entities;
 
 import java.sql.Date;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -32,7 +33,6 @@ public class Paciente {
     private Date fechaNacimiento;
     Set<Consulta> consultas;
     
-
     public Paciente(int id, String tipo_id, String nombre, Date fechaNacimiento) {
         this.id = id;
         this.tipo_id = tipo_id;
@@ -93,7 +93,41 @@ public class Paciente {
         }
         return rep;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + this.id;
+        hash = 53 * hash + Objects.hashCode(this.tipo_id);
+        hash = 53 * hash + Objects.hashCode(this.nombre);
+        hash = 53 * hash + Objects.hashCode(this.fechaNacimiento);
+        hash = 53 * hash + Objects.hashCode(this.consultas);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final Paciente p = (Paciente) obj;
+        
+         boolean ans=true;
+        ans = p.getId()==this.getId() && p.getTipo_id().equals(this.getTipo_id()) && p.getNombre().equals(this.getNombre()) && p.getFechaNacimiento().equals(this.getFechaNacimiento());
+        
+        for(Consulta c:p.getConsultas()){
+            ans=this.getConsultas().contains(c);
+            if(!ans){return false;}
+        }
+        return ans;
     
-    
-    
+    }
+ 
 }

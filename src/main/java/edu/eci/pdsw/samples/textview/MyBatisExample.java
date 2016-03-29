@@ -24,7 +24,6 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.sql.Date;
-
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -74,12 +73,12 @@ public class MyBatisExample {
         SqlSession sqlss = sessionfact.openSession();
 
         PacienteMapper pmap=sqlss.getMapper(PacienteMapper.class);
-        PacienteMapper pmap2=sqlss.getMapper(PacienteMapper.class);
+        
         //prueba para metodo load
         System.out.println(pmap.loadPacienteById(1, "cc"));
         //prueba para insertCOnsulta y insert paciente
         Date date = java.sql.Date.valueOf("1998-06-19");
-        Paciente jhordy = new Paciente(1121946830,"cc","Jhordy Salinis",date);
+        Paciente jhordy = new Paciente(1121946831,"cc","Jhordy Salinis",date);
         Consulta consulta=new Consulta(java.sql.Date.valueOf("2000-01-02"),"hola como estas?");
         Set<Consulta> set=jhordy.getConsultas();
         set.add(consulta);
